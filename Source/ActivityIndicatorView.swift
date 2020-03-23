@@ -69,7 +69,7 @@ public struct ActivityIndicatorView: View {
                 self.isAnimating = false
             })
         } else {
-            return AnyView(Text(""))
+            return AnyView(EmptyView())
         }
     }
 
