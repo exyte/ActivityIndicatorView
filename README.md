@@ -26,15 +26,15 @@ ___
 
 Create an indicator like this:
    ```swift
-   ActivityIndicator(isVisible: $showLoadingIndicator, type: .default)
+   ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .default)
    ```
    where  
    `showLoadingIndicator` - bool value you may change to display or hide the indicator  
-   `type` - value from `ActivityIndicator.IndicatorType` enum  
+   `type` - value from `ActivityIndicatorView.IndicatorType` enum  
 
 You may alter it with standard SwiftUI means like this: 
    ```swift
-   ActivityIndicator(isVisible: $showLoadingIndicator, type: .default)
+   ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .default)
         .frame(width: 50.0, height: 50.0)
         .foregroundColor(.red)
    ```
