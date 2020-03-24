@@ -3,7 +3,7 @@
 
 <p><h1 align="left">ActivityIndicatorView</h1></p>
 
-<p><h4>A number of preset loading indicators created with SwiftUI.</h4></p>
+<p><h4>A number of preset loading indicators created with SwiftUI</h4></p>
 
 ___
 
@@ -78,9 +78,17 @@ pod 'ActivityIndicatorView'
 github "Exyte/ActivityIndicatorView"
 ```
 
+### Swift Package Manager
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/exyte/ActivityIndicatorView.git", from: "0.0.1")
+]
+```
+
 ### Manually
 
-Drop [ActivityIndicatorView.swift](https://github.com/exyte/ActivitiyIndicatorView/blob/master/Source/ActivitiyIndicatorView.swift) into your project.
+Drop [ActivityIndicatorView.swift](https://github.com/exyte/ActivitiyIndicatorView/blob/master/Source/ActivityIndicatorView.swift) into your project.
 
 ## Requirements
 
