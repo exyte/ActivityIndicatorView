@@ -15,11 +15,11 @@ ___
 <a href="https://exyte.com/contacts"><img src="https://i.imgur.com/vGjsQPt.png" width="134" height="34"></a> <a href="https://twitter.com/exyteHQ"><img src="https://i.imgur.com/DngwSn1.png" width="165" height="34"></a>
 
 </br></br>
-[![Travis CI](https://travis-ci.org/exyte/ActivityIndicatorView.svg?branch=master)](https://travis-ci.org/exyte/ActivitiyIndicatorView)
-[![Version](https://img.shields.io/cocoapods/v/ActivityIndicatorView.svg?style=flat)](http://cocoapods.org/pods/ActivitiyIndicatorView)
+[![Travis CI](https://travis-ci.org/exyte/ActivityIndicatorView.svg?branch=master)](https://travis-ci.org/exyte/ActivityIndicatorView)
+[![Version](https://img.shields.io/cocoapods/v/ActivityIndicatorView.svg?style=flat)](http://cocoapods.org/pods/ActivityIndicatorView)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-0473B3.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![License](https://img.shields.io/cocoapods/l/ActivityIndicatorView.svg?style=flat)](http://cocoapods.org/pods/ActivitiyIndicatorView)
-[![Platform](https://img.shields.io/cocoapods/p/ActivityIndicatorView.svg?style=flat)](http://cocoapods.org/pods/ActivitiyIndicatorView)
+[![License](https://img.shields.io/cocoapods/l/ActivityIndicatorView.svg?style=flat)](http://cocoapods.org/pods/ActivityIndicatorView)
+[![Platform](https://img.shields.io/cocoapods/p/ActivityIndicatorView.svg?style=flat)](http://cocoapods.org/pods/ActivityIndicatorView)
 [![Twitter](https://img.shields.io/badge/Twitter-@exyteHQ-blue.svg?style=flat)](http://twitter.com/exyteHQ)
 
 # Usage
@@ -88,7 +88,7 @@ dependencies: [
 
 ### Manually
 
-Drop [ActivityIndicatorView.swift](https://github.com/exyte/ActivitiyIndicatorView/blob/master/Source/ActivityIndicatorView.swift) into your project.
+Drop [ActivityIndicatorView.swift](https://github.com/exyte/ActivityIndicatorView/blob/master/Source/ActivityIndicatorView.swift) into your project.
 
 ## Requirements
 
