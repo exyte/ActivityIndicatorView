@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ActivityIndicatorView"
-  s.version          = "0.0.1"
+  s.version          = "0.0.2"
   s.summary          = "A number of preset loading indicators created with SwiftUI."
 
   s.homepage         = 'https://github.com/exyte/ActivityIndicatorView.git'
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '6.0'
   
   s.requires_arc     = true
-  s.swift_version    = '5.1'
+  s.swift_version    = '5.2'
 
   s.source_files = [
      'Source/*.h',

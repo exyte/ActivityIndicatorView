@@ -74,27 +74,29 @@ public struct ActivityIndicatorView: View {
     }
 
     func createDefaultIndicator() -> AnyView {
+
+        func buildItem(index: Int, count: Int, geometrySize: CGSize) -> some View {
+            let height = geometrySize.height / 3.2
+            let width = height / 2
+            let angle = 2 * CGFloat.pi / CGFloat(count) * CGFloat(index)
+            let x = (geometrySize.width / 2 - height / 2) * cos(angle)
+            let y = (geometrySize.height / 2 - height / 2) * sin(angle)
+            return RoundedRectangle(cornerRadius: width / 2 + 1).frame(width: width, height: height)
+                .rotationEffect(Angle(radians: Double(angle + CGFloat.pi / 2)))
+                .offset(x: x, y: y)
+                .opacity(!self.isAnimating ? 1 : 0.3)
+                .animation(Animation.default
+                    .repeatForever(autoreverses: true)
+                    .delay(Double(index) / Double(count) / 2)
+                )
+        }
+
         let count = 8
         let indicator = GeometryReader { (geometry: GeometryProxy) in
             ForEach(0..<count) { index in
-                Group { () -> AnyView in
-                    let height = geometry.size.height / 3.2
-                    let width = height / 2
-                    let angle = 2 * CGFloat.pi / CGFloat(count) * CGFloat(index)
-                    let x = (geometry.size.width / 2 - height / 2) * cos(angle)
-                    let y = (geometry.size.height / 2 - height / 2) * sin(angle)
-                    let rect = RoundedRectangle(cornerRadius: width / 2 + 1).frame(width: width, height: height)
-                        .rotationEffect(Angle(radians: Double(angle + CGFloat.pi / 2)))
-                        .offset(x: x, y: y)
-                    return AnyView(rect
-                        .opacity(!self.isAnimating ? 1 : 0.3)
-                        .animation(Animation.default
-                            .repeatForever(autoreverses: true)
-                            .delay(Double(index) / Double(count) / 2)
-                        )
-                    )
-                }.frame(width: geometry.size.width, height: geometry.size.height)
+                buildItem(index: index, count: count, geometrySize: geometry.size)
             }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
         return AnyView(indicator)
     }
@@ -139,96 +141,106 @@ public struct ActivityIndicatorView: View {
     }
 
     func createFlickeringDotsIndicator() -> AnyView {
+
+        func buildItem(index: Int, count: Int, geometrySize: CGSize) -> some View {
+            let duration = 0.5
+            let size = geometrySize.height / 5
+            let angle = 2 * CGFloat.pi / CGFloat(count) * CGFloat(index)
+            let x = (geometrySize.width / 2 - size / 2) * cos(angle)
+            let y = (geometrySize.height / 2 - size / 2) * sin(angle)
+            return Circle()
+                .frame(width: size, height: size)
+                .scaleEffect(!self.isAnimating ? 1 : 0.5)
+                .opacity(!self.isAnimating ? 1 : 0.3)
+                .animation(Animation.linear(duration: duration)
+                    .repeatForever(autoreverses: true)
+                    .delay(duration * Double(index) / Double(count) * 2)
+                )
+                .offset(x: x, y: y)
+        }
+
         let count = 8
-        let duration = 0.5
         let indicator = GeometryReader { (geometry: GeometryProxy) in
             ForEach(0..<count) { index in
-                Group { () -> AnyView in
-                    let size = geometry.size.height / 5
-                    let angle = 2 * CGFloat.pi / CGFloat(count) * CGFloat(index)
-                    let x = (geometry.size.width / 2 - size / 2) * cos(angle)
-                    let y = (geometry.size.height / 2 - size / 2) * sin(angle)
-                    let circle = Circle()
-                        .frame(width: size, height: size)
-                        .scaleEffect(!self.isAnimating ? 1 : 0.5)
-                        .opacity(!self.isAnimating ? 1 : 0.3)
-                        .animation(Animation.linear(duration: duration)
-                            .repeatForever(autoreverses: true)
-                            .delay(duration * Double(index) / Double(count) * 2)
-                        )
-                        .offset(x: x, y: y)
-                    return AnyView(circle)
-                }.frame(width: geometry.size.width, height: geometry.size.height)
+                buildItem(index: index, count: count, geometrySize: geometry.size)
             }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
         return AnyView(indicator)
     }
 
     func createScalingDotsIndicator() -> AnyView {
+
+        func buildItem(inset: Int, index: Int, count: Int, size: CGFloat, geometrySize: CGSize) -> some View {
+            Circle()
+                .frame(width: size, height: size)
+                .scaleEffect(!self.isAnimating ? 1 : 0.3)
+                .animation(Animation.easeOut
+                    .repeatForever(autoreverses: true)
+                    .delay(Double(index) / Double(count) / 2)
+                )
+                .offset(x: (size + CGFloat(inset)) * CGFloat(index) - geometrySize.width / 2 + size / 2)
+        }
+
         let count = 3
         let inset = 2
         let indicator = GeometryReader { (geometry: GeometryProxy) in
             ForEach(0..<count) { index in
-                Group { () -> AnyView in
-                    let size = (geometry.size.width - CGFloat(inset) * CGFloat(count - 1)) / CGFloat(count)
-                    let circle = Circle()
-                        .frame(width: size, height: size)
-                    return AnyView(circle
-                        .scaleEffect(!self.isAnimating ? 1 : 0.3)
-                        .animation(Animation.easeOut
-                            .repeatForever(autoreverses: true)
-                            .delay(Double(index) / Double(count) / 2)
-                    )
-                        .offset(x: (size + CGFloat(inset)) * CGFloat(index) - geometry.size.width / 2 + size / 2)
-                    )
-                }
+                buildItem(inset: inset, index: index, count: count,
+                          size: (geometry.size.width - CGFloat(inset) * CGFloat(count - 1)) / CGFloat(count),
+                          geometrySize: geometry.size)
             }.frame(width: geometry.size.width, height: geometry.size.height)
         }
         return AnyView(indicator)
     }
 
     func createOpacityDotsIndicator() -> AnyView {
+
+        func buildItem(inset: Int, index: Int, size: CGFloat, geometrySize: CGSize) -> some View {
+            Circle()
+                .frame(width: size, height: size)
+                .scaleEffect(!self.isAnimating ? 1 : 0.9)
+                .opacity(!self.isAnimating ? 1 : 0.3)
+                .animation(Animation.easeOut
+                    .repeatForever(autoreverses: true)
+                    .delay(index % 2 == 0 ? 0.2 : 0)
+                )
+                .offset(x: (size + CGFloat(inset)) * CGFloat(index) - geometrySize.width / 2 + size / 2)
+        }
+
         let count = 3
         let inset = 4
         let indicator = GeometryReader { (geometry: GeometryProxy) in
             ForEach(0..<count) { index in
-                Group { () -> AnyView in
-                    let size = (geometry.size.width - CGFloat(inset) * CGFloat(count - 1)) / CGFloat(count)
-                    let circle = Circle()
-                        .frame(width: size, height: size)
-                    return AnyView(circle
-                    .scaleEffect(!self.isAnimating ? 1 : 0.9)
-                        .opacity(!self.isAnimating ? 1 : 0.3)
-                        .animation(Animation.easeOut
-                            .repeatForever(autoreverses: true)
-                            .delay(index % 2 == 0 ? 0.2 : 0)
-                    )
-                        .offset(x: (size + CGFloat(inset)) * CGFloat(index) - geometry.size.width / 2 + size / 2)
-                    )
-                }
-            }.frame(width: geometry.size.width, height: geometry.size.height)
+                buildItem(inset: inset, index: index,
+                          size: (geometry.size.width - CGFloat(inset) * CGFloat(count - 1)) / CGFloat(count),
+                          geometrySize: geometry.size)
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
         return AnyView(indicator)
     }
 
     func createEqualizerIndicator() -> AnyView {
+
+        func buildItem(index: Int, count: Int, itemWidth: CGFloat, geometrySize: CGSize) -> some View {
+            RoundedRectangle(cornerRadius: 3)
+                .frame(width: itemWidth, height: geometrySize.height)
+                .scaleEffect(x: 1, y: !self.isAnimating ? 1 : 0.4, anchor: .center)
+                .animation(Animation.easeOut
+                    .delay(0.2)
+                    .repeatForever(autoreverses: true)
+                    .delay(Double(index) / Double(count) / 2)
+                )
+                .offset(x: 2 * itemWidth * CGFloat(index) - geometrySize.width / 2 + itemWidth / 2)
+        }
+
         let count = 5
         let indicator = GeometryReader { (geometry: GeometryProxy) in
             ForEach(0..<count) { index in
-                Group { () -> AnyView in
-                    let size = geometry.size.width / CGFloat(count) / 2
-                    let rect = RoundedRectangle(cornerRadius: 3)
-                        .frame(width: size, height: geometry.size.height)
-                    return AnyView(rect
-                        .scaleEffect(x: 1, y: !self.isAnimating ? 1 : 0.4, anchor: .center)
-                        .animation(Animation.easeOut
-                            .delay(0.2)
-                            .repeatForever(autoreverses: true)
-                            .delay(Double(index) / Double(count) / 2)
-                    )
-                        .offset(x: 2 * size * CGFloat(index) - geometry.size.width / 2 + size / 2)
-                    )
-                }
+                buildItem(index: index, count: count,
+                          itemWidth: geometry.size.width / CGFloat(count) / 2,
+                          geometrySize: geometry.size)
             }.frame(width: geometry.size.width, height: geometry.size.height)
         }
         return AnyView(indicator)
