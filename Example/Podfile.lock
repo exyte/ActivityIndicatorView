@@ -1,0 +1,16 @@
+PODS:
+  - ActivityIndicatorView (0.0.2)
+
+DEPENDENCIES:
+  - ActivityIndicatorView (from `../`)
+
+EXTERNAL SOURCES:
+  ActivityIndicatorView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ActivityIndicatorView: 49aa5a93650b19783fc47a7d15961eb6f2d72b7e
+
+PODFILE CHECKSUM: 54898b444f2a064d09ec9574815fb481a733ffec
+
+COCOAPODS: 1.9.1
