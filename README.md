@@ -47,7 +47,11 @@ You may alter it with standard SwiftUI means like this:
 `scalingDots`  
 `opacityDots`  
 `equalizer`  
-`growingArc`  
+`growingArc` - add custom color for growing Arc, the default value is `Color.red`
+   ```swift
+   ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .growingArc(.red))
+       .frame(width: 50.0, height: 50.0)
+   ```
 `growingCircle`  
 `gradient` - circle with angular gradient border stroke, pass colors ilke this:
    ```swift
