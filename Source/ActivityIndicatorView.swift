@@ -18,7 +18,7 @@ public struct ActivityIndicatorView: View {
         case scalingDots
         case opacityDots
         case equalizer
-        case growingArc
+        case growingArc(Color = Color.red)
         case growingCircle
         case gradient([Color])
     }
@@ -52,8 +52,8 @@ public struct ActivityIndicatorView: View {
             indicator = createOpacityDotsIndicator()
         case .equalizer:
             indicator = createEqualizerIndicator()
-        case .growingArc:
-            indicator = createGrowingArcIndicator()
+        case .growingArc(let color):
+            indicator = createGrowingArcIndicator(color: color)
         case .growingCircle:
             indicator = createGrowingCircleIndicator()
         case .gradient(let colors):
@@ -252,9 +252,9 @@ public struct ActivityIndicatorView: View {
         return AnyView(indicator)
     }
 
-    func createGrowingArcIndicator() -> AnyView {
+    func createGrowingArcIndicator(color: Color) -> AnyView {
         let indicator = GeometryReader { (geometry: GeometryProxy) in
-            GrowingArc(p: self.parameter).stroke(Color.red, lineWidth: 4)
+            GrowingArc(p: self.parameter).stroke(color, lineWidth: 4)
         }.onAppear() {
             withAnimation(Animation.easeIn(duration: 2).repeatForever(autoreverses: false)) {
                 self.parameter = 1
