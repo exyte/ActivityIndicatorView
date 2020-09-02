@@ -37,7 +37,7 @@ struct ContentView: View {
                     ActivityIndicatorView(isVisible: self.$showLoadingIndicator, type: .equalizer)
                         .frame(width: size, height: size)
                         .foregroundColor(.red)
-                    ActivityIndicatorView(isVisible: self.$showLoadingIndicator, type: .growingArc)
+                    ActivityIndicatorView(isVisible: self.$showLoadingIndicator, type: .growingArc())
                         .frame(width: size, height: size)
                         .foregroundColor(.red)
                         Spacer()
