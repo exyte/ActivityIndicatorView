@@ -20,7 +20,7 @@ public struct ActivityIndicatorView: View {
         case equalizer
         case growingArc(Color = Color.red)
         case growingCircle
-        case gradient([Color])
+        case gradient([Color], CGLineCap = .butt)
     }
 
     @Binding var isVisible: Bool
@@ -56,8 +56,8 @@ public struct ActivityIndicatorView: View {
             indicator = createGrowingArcIndicator(color: color)
         case .growingCircle:
             indicator = createGrowingCircleIndicator()
-        case .gradient(let colors):
-            indicator = createGradientIndicator(colors: colors)
+        case .gradient(let colors, let lineCap):
+            indicator = createGradientIndicator(colors: colors, lineCap: lineCap)
         }
 
         if isVisible {
@@ -306,19 +306,32 @@ public struct ActivityIndicatorView: View {
         return AnyView(indicator)
     }
 
-    func createGradientIndicator(colors: [Color]) -> AnyView {
-        let colors = Gradient(colors: colors)
-        let conic = AngularGradient(gradient: colors, center: .center, startAngle: .zero, endAngle: .degrees(360))
+    func createGradientIndicator(colors: [Color], lineCap: CGLineCap) -> AnyView {
+        let gradientColors = Gradient(colors: colors)
+        let conic = AngularGradient(gradient: gradientColors, center: .center, startAngle: .zero, endAngle: .degrees(360))
+        let lineWidth: CGFloat = 4
 
-        let indicator = Circle()
-            .strokeBorder(conic, lineWidth: 4)
-            .rotationEffect(.degrees(parameters[0]))
-            .onAppear {
+        let indicator = ZStack {
+            Circle()
+                .stroke(colors.first ?? .white, lineWidth: lineWidth)
+            
+            Circle()
+                .trim(from: lineWidth / 500, to: 1 - lineWidth / 100)
+                .stroke(conic, style: StrokeStyle(lineWidth: lineWidth, lineCap: lineCap))
+                .rotationEffect(.degrees(parameters[0]))
+                .onAppear {
+                    self.parameters[0] = 0
+                    withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
+                        self.parameters[0] = 360
+                }
                 self.parameters[0] = 0
                 withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
                     self.parameters[0] = 360
                 }
             }
+        }
+    }
+    }
 
         return AnyView(indicator)
     }
