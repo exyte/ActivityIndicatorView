@@ -283,14 +283,14 @@ public struct ActivityIndicatorView: View {
     func createGradientIndicator(colors: [Color], lineCap: CGLineCap) -> AnyView {
         let gradientColors = Gradient(colors: colors)
         let conic = AngularGradient(gradient: gradientColors, center: .center, startAngle: .zero, endAngle: .degrees(360))
-        let lineWidth: CGFloat = 50
+        let lineWidth: CGFloat = 4
         let indicator = GeometryReader { (geometry: GeometryProxy) in
             ZStack {
                 Circle()
                     .stroke(colors.first ?? .white, lineWidth: lineWidth)
                 Circle()
                     .trim(from: lineWidth / 500, to: 1 - lineWidth / 100)
-                    .stroke(conic, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                    .stroke(conic, style: StrokeStyle(lineWidth: lineWidth, lineCap: lineCap))
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .rotationEffect(!self.isAnimating ? .degrees(0) : .degrees(360))
                     .animation(Animation.linear(duration: 1.5)
