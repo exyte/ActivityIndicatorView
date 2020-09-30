@@ -20,7 +20,7 @@ public struct ActivityIndicatorView: View {
         case equalizer
         case growingArc(Color = Color.red)
         case growingCircle
-        case gradient([Color])
+        case gradient([Color], CGLineCap = .butt)
     }
 
     @Binding var isVisible: Bool
@@ -56,8 +56,8 @@ public struct ActivityIndicatorView: View {
             indicator = createGrowingArcIndicator(color: color)
         case .growingCircle:
             indicator = createGrowingCircleIndicator()
-        case .gradient(let colors):
-            indicator = createGradientIndicator(colors: colors)
+        case .gradient(let colors, let lineCap):
+            indicator = createGradientIndicator(colors: colors, lineCap: lineCap)
         }
 
         if isVisible {
@@ -280,17 +280,17 @@ public struct ActivityIndicatorView: View {
         return AnyView(indicator)
     }
 
-    func createGradientIndicator(colors: [Color]) -> AnyView {
+    func createGradientIndicator(colors: [Color], lineCap: CGLineCap) -> AnyView {
         let gradientColors = Gradient(colors: colors)
         let conic = AngularGradient(gradient: gradientColors, center: .center, startAngle: .zero, endAngle: .degrees(360))
-
+        let lineWidth: CGFloat = 50
         let indicator = GeometryReader { (geometry: GeometryProxy) in
             ZStack {
                 Circle()
-                    .stroke(colors.first ?? .white, lineWidth: 4)
+                    .stroke(colors.first ?? .white, lineWidth: lineWidth)
                 Circle()
-                    .trim(from: 0.01, to: 0.99)
-                    .stroke(conic, style: StrokeStyle(lineWidth: 4, lineCap: .round))
+                    .trim(from: lineWidth / 500, to: 1 - lineWidth / 100)
+                    .stroke(conic, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .rotationEffect(!self.isAnimating ? .degrees(0) : .degrees(360))
                     .animation(Animation.linear(duration: 1.5)
