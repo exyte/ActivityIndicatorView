@@ -27,7 +27,7 @@ public struct ActivityIndicatorView: View {
     var type: IndicatorType
 
     @State private var isAnimating: Bool = false
-    @State private var parameter = 0.0
+    @State private var parameters = Array<Double>(repeating: 0.0, count: 8)
 
     public init(isVisible: Binding<Bool>, type: IndicatorType) {
         self._isVisible = isVisible
@@ -84,11 +84,14 @@ public struct ActivityIndicatorView: View {
             return RoundedRectangle(cornerRadius: width / 2 + 1).frame(width: width, height: height)
                 .rotationEffect(Angle(radians: Double(angle + CGFloat.pi / 2)))
                 .offset(x: x, y: y)
-                .opacity(!self.isAnimating ? 1 : 0.3)
-                .animation(Animation.default
-                    .repeatForever(autoreverses: true)
-                    .delay(Double(index) / Double(count) / 2)
-                )
+                .opacity(self.parameters[index])
+                .onAppear {
+                    self.parameters[index] = 1
+                    withAnimation(Animation.default.repeatForever(autoreverses: true)
+                                    .delay(Double(index) / Double(count) / 2)) {
+                        self.parameters[index] = 0.3
+                    }
+                }
         }
 
         let count = 8
@@ -114,10 +117,14 @@ public struct ActivityIndicatorView: View {
                              clockwise: true)
                     return p.strokedPath(.init(lineWidth: 2))
                 }.frame(width: geometry.size.width, height: geometry.size.height)
-                    .rotationEffect(!self.isAnimating ? .degrees(0) : .degrees(360))
-                    .animation(Animation.default
-                        .speed(Double.random(in: 0.2...0.5))
-                        .repeatForever(autoreverses: false))
+                .rotationEffect(.degrees(parameters[index]))
+                .onAppear {
+                    self.parameters[index] = 0
+                    withAnimation(Animation.default.speed(Double.random(in: 0.2...0.5))
+                                    .repeatForever(autoreverses: false)) {
+                        self.parameters[index] = 360
+                    }
+                }
             }
         }
         return AnyView(indicator)
@@ -128,8 +135,16 @@ public struct ActivityIndicatorView: View {
         func createSmallCircle(_ size: CGSize, _ index: Int) -> some View {
             return Circle()
                 .frame(width: size.width / 5, height: size.height / 5)
-                .scaleEffect(!self.isAnimating ? 1 - CGFloat(index) / 5 : 0.2 + CGFloat(index) / 5)
+                .scaleEffect(parameters[index] == 0 ? (5 - CGFloat(index)) / 5 : (1 + CGFloat(index)) / 5)
                 .offset(y: size.width / 10 - size.height / 2)
+                .rotationEffect(.degrees(parameters[index]))
+                .onAppear {
+                    self.parameters[index] = 0
+                    withAnimation(Animation.timingCurve(0.5, 0.15 + Double(index) / 5, 0.25, 1, duration: 1.5)
+                                    .repeatForever(autoreverses: false)) {
+                        self.parameters[index] = 360
+                    }
+                }
         }
 
         let indicator = GeometryReader { (geometry: GeometryProxy) in
@@ -137,10 +152,7 @@ public struct ActivityIndicatorView: View {
                 Group {
                     createSmallCircle(geometry.size, index)
                 }.frame(width: geometry.size.width, height: geometry.size.height)
-                    .rotationEffect(!self.isAnimating ? .degrees(0) : .degrees(360))
-                    .animation(Animation
-                        .timingCurve(0.5, 0.15 + Double(index) / 5, 0.25, 1, duration: 1.5)
-                        .repeatForever(autoreverses: false))
+
             }
         }
         return AnyView(indicator)
@@ -156,12 +168,16 @@ public struct ActivityIndicatorView: View {
             let y = (geometrySize.height / 2 - size / 2) * sin(angle)
             return Circle()
                 .frame(width: size, height: size)
-                .scaleEffect(!self.isAnimating ? 1 : 0.5)
-                .opacity(!self.isAnimating ? 1 : 0.3)
-                .animation(Animation.linear(duration: duration)
-                    .repeatForever(autoreverses: true)
-                    .delay(duration * Double(index) / Double(count) * 2)
-                )
+                .scaleEffect(CGFloat(self.parameters[index]))
+                .opacity(parameters[index] == 1 ? 1 : parameters[index] * 3 / 5)
+                .onAppear {
+                    self.parameters[index] = 1
+                    withAnimation(Animation.linear(duration: duration)
+                                    .repeatForever(autoreverses: true)
+                                    .delay(duration * Double(index) / Double(count) * 2)) {
+                        self.parameters[index] = 0.5
+                    }
+                }
                 .offset(x: x, y: y)
         }
 
@@ -180,11 +196,15 @@ public struct ActivityIndicatorView: View {
         func buildItem(inset: Int, index: Int, count: Int, size: CGFloat, geometrySize: CGSize) -> some View {
             Circle()
                 .frame(width: size, height: size)
-                .scaleEffect(!self.isAnimating ? 1 : 0.3)
-                .animation(Animation.easeOut
-                    .repeatForever(autoreverses: true)
-                    .delay(Double(index) / Double(count) / 2)
-                )
+                .scaleEffect(CGFloat(parameters[index]))
+                .onAppear {
+                    self.parameters[index] = 1
+                    withAnimation(Animation.easeOut
+                                    .repeatForever(autoreverses: true)
+                                    .delay(Double(index) / Double(count) / 2)) {
+                        self.parameters[index] = 0.3
+                    }
+                }
                 .offset(x: (size + CGFloat(inset)) * CGFloat(index) - geometrySize.width / 2 + size / 2)
         }
 
@@ -205,12 +225,16 @@ public struct ActivityIndicatorView: View {
         func buildItem(inset: Int, index: Int, size: CGFloat, geometrySize: CGSize) -> some View {
             Circle()
                 .frame(width: size, height: size)
-                .scaleEffect(!self.isAnimating ? 1 : 0.9)
-                .opacity(!self.isAnimating ? 1 : 0.3)
-                .animation(Animation.easeOut
-                    .repeatForever(autoreverses: true)
-                    .delay(index % 2 == 0 ? 0.2 : 0)
-                )
+                .scaleEffect(CGFloat(parameters[index]))
+                .opacity(parameters[index] == 1 ? 1 : parameters[index] / 3)
+                .onAppear {
+                    self.parameters[index] = 1
+                    withAnimation(Animation.easeOut
+                                    .repeatForever(autoreverses: true)
+                                    .delay(index % 2 == 0 ? 0.2 : 0)) {
+                        self.parameters[index] = 0.9
+                    }
+                }
                 .offset(x: (size + CGFloat(inset)) * CGFloat(index) - geometrySize.width / 2 + size / 2)
         }
 
@@ -232,12 +256,15 @@ public struct ActivityIndicatorView: View {
         func buildItem(index: Int, count: Int, itemWidth: CGFloat, geometrySize: CGSize) -> some View {
             RoundedRectangle(cornerRadius: 3)
                 .frame(width: itemWidth, height: geometrySize.height)
-                .scaleEffect(x: 1, y: !self.isAnimating ? 1 : 0.4, anchor: .center)
-                .animation(Animation.easeOut
-                    .delay(0.2)
-                    .repeatForever(autoreverses: true)
-                    .delay(Double(index) / Double(count) / 2)
-                )
+                .scaleEffect(x: 1, y: CGFloat(parameters[index]), anchor: .center)
+                .onAppear {
+                    self.parameters[index] = 1
+                    withAnimation(Animation.easeOut.delay(0.2)
+                                    .repeatForever(autoreverses: true)
+                                    .delay(Double(index) / Double(count) / 2)) {
+                        self.parameters[index] = 0.4
+                    }
+                }
                 .offset(x: 2 * itemWidth * CGFloat(index) - geometrySize.width / 2 + itemWidth / 2)
         }
 
@@ -247,35 +274,34 @@ public struct ActivityIndicatorView: View {
                 buildItem(index: index, count: count,
                           itemWidth: geometry.size.width / CGFloat(count) / 2,
                           geometrySize: geometry.size)
-            }.frame(width: geometry.size.width, height: geometry.size.height)
+            }
         }
         return AnyView(indicator)
     }
 
     func createGrowingArcIndicator(color: Color) -> AnyView {
-        let indicator = GeometryReader { (geometry: GeometryProxy) in
-            GrowingArc(p: self.parameter).stroke(color, lineWidth: 4)
-        }.onAppear() {
-            withAnimation(Animation.easeIn(duration: 2).repeatForever(autoreverses: false)) {
-                self.parameter = 1
+        let indicator = GrowingArc(p: parameters[0])
+            .stroke(color, lineWidth: 4)
+            .onAppear {
+                self.parameters[0] = 0
+                withAnimation(Animation.easeIn(duration: 2).repeatForever(autoreverses: false)) {
+                    self.parameters[0] = 1
+                }
             }
-        }.onDisappear() {
-            self.parameter = 0
-        }
 
         return AnyView(indicator)
     }
 
     func createGrowingCircleIndicator() -> AnyView {
-
-        let indicator = GeometryReader { (geometry: GeometryProxy) in
-            Circle()
-                .frame(width: geometry.size.width, height: geometry.size.height)
-                .scaleEffect(!self.isAnimating ? 0 : 1)
-                .opacity(!self.isAnimating ? 1 : 0)
-                .animation(Animation.easeIn(duration: 1.1)
-                    .repeatForever(autoreverses: false))
-        }
+        let indicator = Circle()
+            .scaleEffect(CGFloat(parameters[0]))
+            .opacity(1 - parameters[0])
+            .onAppear {
+                self.parameters[0] = 0
+                withAnimation(Animation.easeIn(duration: 1.1).repeatForever(autoreverses: false)) {
+                    self.parameters[0] = 1
+                }
+            }
 
         return AnyView(indicator)
     }
@@ -284,14 +310,15 @@ public struct ActivityIndicatorView: View {
         let colors = Gradient(colors: colors)
         let conic = AngularGradient(gradient: colors, center: .center, startAngle: .zero, endAngle: .degrees(360))
 
-        let indicator = GeometryReader { (geometry: GeometryProxy) in
-            Circle()
-                .strokeBorder(conic, lineWidth: 4)
-                .frame(width: geometry.size.width, height: geometry.size.height)
-                .rotationEffect(!self.isAnimating ? .degrees(0) : .degrees(360))
-                .animation(Animation.linear(duration: 1.5)
-                    .repeatForever(autoreverses: false))
-        }
+        let indicator = Circle()
+            .strokeBorder(conic, lineWidth: 4)
+            .rotationEffect(.degrees(parameters[0]))
+            .onAppear {
+                self.parameters[0] = 0
+                withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
+                    self.parameters[0] = 360
+                }
+            }
 
         return AnyView(indicator)
     }
