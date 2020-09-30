@@ -323,15 +323,9 @@ public struct ActivityIndicatorView: View {
                     self.parameters[0] = 0
                     withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
                         self.parameters[0] = 360
+                    }
                 }
-                self.parameters[0] = 0
-                withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
-                    self.parameters[0] = 360
-                }
-            }
         }
-    }
-    }
 
         return AnyView(indicator)
     }
