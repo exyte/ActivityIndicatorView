@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		5B56E7DB2428A1D900A5AF97 /* ActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B56E7D82428A1D900A5AF97 /* ActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B56E7DC2428A1D900A5AF97 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B56E7D92428A1D900A5AF97 /* ActivityIndicatorView.swift */; };
+		A7423F46252DC96E000D014D /* GrowingArcIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F45252DC96E000D014D /* GrowingArcIndicatorView.swift */; };
+		A7423F5B252DCD76000D014D /* DefaultIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F5A252DCD76000D014D /* DefaultIndicatorView.swift */; };
+		A7423F63252DD0D8000D014D /* ArcsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F62252DD0D8000D014D /* ArcsIndicatorView.swift */; };
+		A7423F6B252DD2F5000D014D /* RotatingDotsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F6A252DD2F5000D014D /* RotatingDotsIndicatorView.swift */; };
+		A7423F71252DD554000D014D /* FlickeringDotsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F70252DD554000D014D /* FlickeringDotsIndicatorView.swift */; };
+		A7423F7C252DD872000D014D /* ScalingDotsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F7B252DD872000D014D /* ScalingDotsIndicatorView.swift */; };
+		A7423F83252DDC15000D014D /* OpacityDotsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F82252DDC15000D014D /* OpacityDotsIndicatorView.swift */; };
+		A7423F89252DDD67000D014D /* EqualizerIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F88252DDD67000D014D /* EqualizerIndicatorView.swift */; };
+		A7423F8F252DDF18000D014D /* GrowingCircleIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F8E252DDF18000D014D /* GrowingCircleIndicatorView.swift */; };
+		A7423F95252DDFD4000D014D /* GradientIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F94252DDFD4000D014D /* GradientIndicatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +26,16 @@
 		5B56E7D92428A1D900A5AF97 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		5B56E7DA2428A1D900A5AF97 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BA1FA342424A5CE00EE4184 /* ActivityIndicatorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActivityIndicatorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7423F45252DC96E000D014D /* GrowingArcIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingArcIndicatorView.swift; sourceTree = "<group>"; };
+		A7423F5A252DCD76000D014D /* DefaultIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultIndicatorView.swift; sourceTree = "<group>"; };
+		A7423F62252DD0D8000D014D /* ArcsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcsIndicatorView.swift; sourceTree = "<group>"; };
+		A7423F6A252DD2F5000D014D /* RotatingDotsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingDotsIndicatorView.swift; sourceTree = "<group>"; };
+		A7423F70252DD554000D014D /* FlickeringDotsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickeringDotsIndicatorView.swift; sourceTree = "<group>"; };
+		A7423F7B252DD872000D014D /* ScalingDotsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalingDotsIndicatorView.swift; sourceTree = "<group>"; };
+		A7423F82252DDC15000D014D /* OpacityDotsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacityDotsIndicatorView.swift; sourceTree = "<group>"; };
+		A7423F88252DDD67000D014D /* EqualizerIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerIndicatorView.swift; sourceTree = "<group>"; };
+		A7423F8E252DDF18000D014D /* GrowingCircleIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingCircleIndicatorView.swift; sourceTree = "<group>"; };
+		A7423F94252DDFD4000D014D /* GradientIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientIndicatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +52,7 @@
 		5B56E7D72428A1D900A5AF97 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A7423F77252DD82F000D014D /* Indicators */,
 				5B56E7D82428A1D900A5AF97 /* ActivityIndicatorView.h */,
 				5B56E7D92428A1D900A5AF97 /* ActivityIndicatorView.swift */,
 				5B56E7DA2428A1D900A5AF97 /* Info.plist */,
@@ -53,6 +74,23 @@
 				5BA1FA342424A5CE00EE4184 /* ActivityIndicatorView.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A7423F77252DD82F000D014D /* Indicators */ = {
+			isa = PBXGroup;
+			children = (
+				A7423F62252DD0D8000D014D /* ArcsIndicatorView.swift */,
+				A7423F5A252DCD76000D014D /* DefaultIndicatorView.swift */,
+				A7423F45252DC96E000D014D /* GrowingArcIndicatorView.swift */,
+				A7423F6A252DD2F5000D014D /* RotatingDotsIndicatorView.swift */,
+				A7423F70252DD554000D014D /* FlickeringDotsIndicatorView.swift */,
+				A7423F7B252DD872000D014D /* ScalingDotsIndicatorView.swift */,
+				A7423F82252DDC15000D014D /* OpacityDotsIndicatorView.swift */,
+				A7423F88252DDD67000D014D /* EqualizerIndicatorView.swift */,
+				A7423F8E252DDF18000D014D /* GrowingCircleIndicatorView.swift */,
+				A7423F94252DDFD4000D014D /* GradientIndicatorView.swift */,
+			);
+			path = Indicators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +173,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7423F6B252DD2F5000D014D /* RotatingDotsIndicatorView.swift in Sources */,
+				A7423F63252DD0D8000D014D /* ArcsIndicatorView.swift in Sources */,
+				A7423F95252DDFD4000D014D /* GradientIndicatorView.swift in Sources */,
+				A7423F8F252DDF18000D014D /* GrowingCircleIndicatorView.swift in Sources */,
+				A7423F89252DDD67000D014D /* EqualizerIndicatorView.swift in Sources */,
 				5B56E7DC2428A1D900A5AF97 /* ActivityIndicatorView.swift in Sources */,
+				A7423F7C252DD872000D014D /* ScalingDotsIndicatorView.swift in Sources */,
+				A7423F83252DDC15000D014D /* OpacityDotsIndicatorView.swift in Sources */,
+				A7423F46252DC96E000D014D /* GrowingArcIndicatorView.swift in Sources */,
+				A7423F71252DD554000D014D /* FlickeringDotsIndicatorView.swift in Sources */,
+				A7423F5B252DCD76000D014D /* DefaultIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
