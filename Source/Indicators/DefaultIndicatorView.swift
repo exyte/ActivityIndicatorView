@@ -14,8 +14,8 @@ struct DefaultIndicatorView: View {
 
     public var body: some View {
         GeometryReader { geometry in
-            ForEach(0..<count) { index in
-                DefaultIndicatorItemView(index: index, count: count, size: geometry.size)
+            ForEach(0..<self.count) { index in
+                DefaultIndicatorItemView(index: index, count: self.count, size: geometry.size)
             }.frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
@@ -46,9 +46,9 @@ struct DefaultIndicatorItemView: View {
             .offset(x: x, y: y)
             .opacity(opacity)
             .onAppear {
-                opacity = 1
+                self.opacity = 1
                 withAnimation(animation) {
-                    opacity = 0.3
+                    self.opacity = 0.3
                 }
             }
     }

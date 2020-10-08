@@ -14,8 +14,8 @@ struct ArcsIndicatorView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            ForEach(0..<count) { index in
-                ArcsIndicatorItemView(index: index, count: count, size: geometry.size)
+            ForEach(0..<self.count) { index in
+                ArcsIndicatorItemView(index: index, count: self.count, size: geometry.size)
             }
         }
     }
@@ -36,8 +36,8 @@ struct ArcsIndicatorItemView: View {
 
         return Group { () -> Path in
             var p = Path()
-            p.addArc(center: CGPoint(x: size.width / 2, y: size.height / 2),
-                     radius: size.width / 2 - CGFloat(index) * CGFloat(count),
+            p.addArc(center: CGPoint(x: self.size.width / 2, y: self.size.height / 2),
+                     radius: self.size.width / 2 - CGFloat(self.index) * CGFloat(self.count),
                      startAngle: .degrees(0),
                      endAngle: .degrees(Double(Int.random(in: 120...300))),
                      clockwise: true)
@@ -46,9 +46,9 @@ struct ArcsIndicatorItemView: View {
         .frame(width: size.width, height: size.height)
         .rotationEffect(.degrees(rotation))
         .onAppear {
-            rotation = 0
+            self.rotation = 0
             withAnimation(animation) {
-                rotation = 360
+                self.rotation = 360
             }
         }
     }

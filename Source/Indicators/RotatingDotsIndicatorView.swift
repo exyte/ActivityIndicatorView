@@ -14,7 +14,7 @@ struct RotatingDotsIndicatorView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            ForEach(0..<count) { index in
+            ForEach(0..<self.count) { index in
                 RotatingDotsIndicatorItemView(index: index, size: geometry.size)
             }.frame(width: geometry.size.width, height: geometry.size.height)
         }
@@ -40,11 +40,11 @@ struct RotatingDotsIndicatorItemView: View {
             .offset(y: size.width / 10 - size.height / 2)
             .rotationEffect(.degrees(rotation))
             .onAppear {
-                rotation = 0
-                scale = (5 - CGFloat(index)) / 5
+                self.rotation = 0
+                self.scale = (5 - CGFloat(self.index)) / 5
                 withAnimation(animation) {
-                    rotation = 360
-                    scale = (1 + CGFloat(index)) / 5
+                    self.rotation = 360
+                    self.scale = (1 + CGFloat(self.index)) / 5
                 }
             }
     }

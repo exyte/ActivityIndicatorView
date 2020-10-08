@@ -14,8 +14,8 @@ struct EqualizerIndicatorView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            ForEach(0..<count) { index in
-                EqualizerIndicatorItemView(index: index, count: count, size: geometry.size)
+            ForEach(0..<self.count) { index in
+                EqualizerIndicatorItemView(index: index, count: self.count, size: geometry.size)
             }.frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
@@ -40,9 +40,9 @@ struct EqualizerIndicatorItemView: View {
             .frame(width: itemSize, height: size.height)
             .scaleEffect(x: 1, y: scale, anchor: .center)
             .onAppear {
-                scale = 1
+                self.scale = 1
                 withAnimation(animation) {
-                    scale = 0.4
+                    self.scale = 0.4
                 }
             }
             .offset(x: 2 * itemSize * CGFloat(index) - size.width / 2 + itemSize / 2)

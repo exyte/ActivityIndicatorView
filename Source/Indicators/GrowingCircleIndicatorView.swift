@@ -22,11 +22,11 @@ struct GrowingCircleIndicatorView: View {
             .scaleEffect(scale)
             .opacity(opacity)
             .onAppear {
-                scale = 0
-                opacity = 1
+                self.scale = 0
+                self.opacity = 1
                 withAnimation(animation) {
-                    scale = 1
-                    opacity = 0
+                    self.scale = 1
+                    self.opacity = 0
                 }
             }
     }

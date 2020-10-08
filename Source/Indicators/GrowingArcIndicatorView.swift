@@ -21,9 +21,9 @@ struct GrowingArcIndicatorView: View {
         return GrowingArc(p: animatableParameter)
             .stroke(color, lineWidth: 4)
             .onAppear {
-                animatableParameter = 0
+                self.animatableParameter = 0
                 withAnimation(animation) {
-                    animatableParameter = 1
+                    self.animatableParameter = 1
                 }
             }
     }

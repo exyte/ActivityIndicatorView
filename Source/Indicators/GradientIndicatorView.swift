@@ -33,9 +33,9 @@ struct GradientIndicatorView: View {
                 .stroke(conic, style: StrokeStyle(lineWidth: lineWidth, lineCap: lineCap))
                 .rotationEffect(.degrees(rotation))
                 .onAppear {
-                    rotation = 0
+                    self.rotation = 0
                     withAnimation(animation) {
-                        rotation = 360
+                        self.rotation = 360
                     }
                 }
         }
