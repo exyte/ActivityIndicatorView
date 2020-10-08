@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   s.source_files = [
      'Source/*.h',
      'Source/*.swift',
-     'Source/Indicators/*.swift'
+     'Source/**/*.swift'
   ]
 end
