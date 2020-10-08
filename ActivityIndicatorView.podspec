@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ActivityIndicatorView"
-  s.version          = "0.0.4"
+  s.version          = "0.0.5"
   s.summary          = "A number of preset loading indicators created with SwiftUI."
 
   s.homepage         = 'https://github.com/exyte/ActivityIndicatorView.git'
