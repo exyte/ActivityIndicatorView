@@ -26,23 +26,12 @@ public struct ActivityIndicatorView: View {
     @Binding var isVisible: Bool
     var type: IndicatorType
 
-    @State private var isAnimating: Bool = false
-    @State private var parameters = Array<Double>(repeating: 0.0, count: 8)
-
     public init(isVisible: Binding<Bool>, type: IndicatorType) {
         self._isVisible = isVisible
         self.type = type
     }
 
     public var body: some View {
-        indicator
-            .onAppear { isAnimating = true }
-            .onDisappear { isAnimating = false }
-    }
-
-    // MARK: - Private
-
-    private var indicator: some View {
         guard isVisible else { return AnyView(EmptyView()) }
         switch type {
         case .default:
