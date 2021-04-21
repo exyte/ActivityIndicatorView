@@ -58,6 +58,7 @@ You may alter it with standard SwiftUI means like this:
    ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .gradient([.white, .red]))
        .frame(width: 50.0, height: 50.0)
    ```
+`simpleBar`  
 
 ## Examples
 
