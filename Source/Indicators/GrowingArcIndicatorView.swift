@@ -22,8 +22,10 @@ struct GrowingArcIndicatorView: View {
             .stroke(color, lineWidth: 4)
             .onAppear {
                 self.animatableParameter = 0
-                withAnimation(animation) {
-                    self.animatableParameter = 1
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    withAnimation(animation) {
+                        self.animatableParameter = 1
+                    }
                 }
             }
     }

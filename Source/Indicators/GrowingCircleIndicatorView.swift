@@ -24,9 +24,11 @@ struct GrowingCircleIndicatorView: View {
             .onAppear {
                 self.scale = 0
                 self.opacity = 1
-                withAnimation(animation) {
-                    self.scale = 1
-                    self.opacity = 0
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    withAnimation(animation) {
+                        self.scale = 1
+                        self.opacity = 0
+                    }
                 }
             }
     }

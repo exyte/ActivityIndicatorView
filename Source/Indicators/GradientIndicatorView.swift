@@ -34,8 +34,10 @@ struct GradientIndicatorView: View {
                 .rotationEffect(.degrees(rotation))
                 .onAppear {
                     self.rotation = 0
-                    withAnimation(animation) {
-                        self.rotation = 360
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                        withAnimation(animation) {
+                            self.rotation = 360
+                        }
                     }
                 }
         }
