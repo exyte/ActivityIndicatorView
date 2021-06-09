@@ -35,16 +35,16 @@ struct SimpleBarIndicatorView: View {
             .easeInOut(duration: 2.0)
             .repeatForever(autoreverses: false)
         
-        GeometryReader { geometry in
+        return GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 Rectangle()
                     .frame(width: geometry.size.width , height: geometry.size.height)
                     .opacity(0.3)
-                    .foregroundColor(backgroundColor)
+                    .foregroundColor(self.backgroundColor)
                 
                 Rectangle()
-                    .frame(width: Swift.min(CGFloat((max-min)*value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
-                    .foregroundColor(barColor)
+                    .frame(width: Swift.min(CGFloat((self.max-self.min)*self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
+                    .foregroundColor(self.barColor)
                     .opacity(self.barOpacity)
                     .onAppear(perform: {
                         self.value = 0
