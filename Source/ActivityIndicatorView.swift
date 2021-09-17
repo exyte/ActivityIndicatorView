@@ -21,6 +21,7 @@ public struct ActivityIndicatorView: View {
         case growingArc(Color = .red)
         case growingCircle
         case gradient([Color], CGLineCap = .butt)
+        case progressBar(Binding<CGFloat>, Color = .clear)
     }
 
     @Binding var isVisible: Bool
@@ -54,6 +55,8 @@ public struct ActivityIndicatorView: View {
             return AnyView(GrowingCircleIndicatorView())
         case .gradient(let colors, let lineCap):
             return AnyView(GradientIndicatorView(colors: colors, lineCap: lineCap))
+        case .progressBar(let progress, let backgroundColor):
+            return AnyView(ProgressBarView(progress: progress, backgroundColor: backgroundColor))
         }
     }
 }
