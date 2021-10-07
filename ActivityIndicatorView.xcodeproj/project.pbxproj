@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B56E7DB2428A1D900A5AF97 /* ActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B56E7D82428A1D900A5AF97 /* ActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B56E7DC2428A1D900A5AF97 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B56E7D92428A1D900A5AF97 /* ActivityIndicatorView.swift */; };
-		A7245DFF26F367EE000B86EB /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7245DFE26F367EE000B86EB /* ProgressBarView.swift */; };
 		A7423F46252DC96E000D014D /* GrowingArcIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F45252DC96E000D014D /* GrowingArcIndicatorView.swift */; };
 		A7423F5B252DCD76000D014D /* DefaultIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F5A252DCD76000D014D /* DefaultIndicatorView.swift */; };
 		A7423F63252DD0D8000D014D /* ArcsIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7423F62252DD0D8000D014D /* ArcsIndicatorView.swift */; };
@@ -27,7 +26,6 @@
 		5B56E7D92428A1D900A5AF97 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		5B56E7DA2428A1D900A5AF97 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BA1FA342424A5CE00EE4184 /* ActivityIndicatorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActivityIndicatorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7245DFE26F367EE000B86EB /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		A7423F45252DC96E000D014D /* GrowingArcIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingArcIndicatorView.swift; sourceTree = "<group>"; };
 		A7423F5A252DCD76000D014D /* DefaultIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultIndicatorView.swift; sourceTree = "<group>"; };
 		A7423F62252DD0D8000D014D /* ArcsIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcsIndicatorView.swift; sourceTree = "<group>"; };
@@ -54,10 +52,9 @@
 		5B56E7D72428A1D900A5AF97 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A7423F77252DD82F000D014D /* Indicators */,
-				A7245E0126F484F4000B86EB /* Bars */,
-				5B56E7D82428A1D900A5AF97 /* ActivityIndicatorView.h */,
 				5B56E7D92428A1D900A5AF97 /* ActivityIndicatorView.swift */,
+				A79CC155270C470B007AF235 /* Indicators */,
+				5B56E7D82428A1D900A5AF97 /* ActivityIndicatorView.h */,
 				5B56E7DA2428A1D900A5AF97 /* Info.plist */,
 			);
 			path = Source;
@@ -79,15 +76,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A7245E0126F484F4000B86EB /* Bars */ = {
-			isa = PBXGroup;
-			children = (
-				A7245DFE26F367EE000B86EB /* ProgressBarView.swift */,
-			);
-			path = Bars;
-			sourceTree = "<group>";
-		};
-		A7423F77252DD82F000D014D /* Indicators */ = {
+		A79CC155270C470B007AF235 /* Indicators */ = {
 			isa = PBXGroup;
 			children = (
 				A7423F62252DD0D8000D014D /* ArcsIndicatorView.swift */,
@@ -190,7 +179,6 @@
 				A7423F8F252DDF18000D014D /* GrowingCircleIndicatorView.swift in Sources */,
 				A7423F89252DDD67000D014D /* EqualizerIndicatorView.swift in Sources */,
 				5B56E7DC2428A1D900A5AF97 /* ActivityIndicatorView.swift in Sources */,
-				A7245DFF26F367EE000B86EB /* ProgressBarView.swift in Sources */,
 				A7423F7C252DD872000D014D /* ScalingDotsIndicatorView.swift in Sources */,
 				A7423F83252DDC15000D014D /* OpacityDotsIndicatorView.swift in Sources */,
 				A7423F46252DC96E000D014D /* GrowingArcIndicatorView.swift in Sources */,
