@@ -58,12 +58,6 @@ You may alter it with standard SwiftUI means like this:
    ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .gradient([.white, .red]))
        .frame(width: 50.0, height: 50.0)
    ```  
-`progressBar` - line progress bar with a Binding<CGFloat> progress value and background color, default is `Color.clear`:
-   ```swift
-   ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .progressBar($progressValue, .gray)
-       .frame(height: 8.0)
-       .foregroundColor(.red)
-   ```  
 
 ## Examples
 
