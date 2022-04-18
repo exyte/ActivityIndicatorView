@@ -10,13 +10,14 @@ import SwiftUI
 
 struct FlickeringDotsIndicatorView: View {
 
-    private let count: Int = 8
+    let count: Int
 
     var body: some View {
         GeometryReader { geometry in
-            ForEach(0..<self.count) { index in
-                FlickeringDotsIndicatorItemView(index: index, count: self.count, size: geometry.size)
-            }.frame(width: geometry.size.width, height: geometry.size.height)
+            ForEach(0..<count, id: \.self) { index in
+                FlickeringDotsIndicatorItemView(index: index, count: count, size: geometry.size)
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
 }
@@ -46,11 +47,11 @@ struct FlickeringDotsIndicatorItemView: View {
             .scaleEffect(scale)
             .opacity(opacity)
             .onAppear {
-                self.scale = 1
-                self.opacity = 1
+                scale = 1
+                opacity = 1
                 withAnimation(animation) {
-                    self.scale = 0.5
-                    self.opacity = 0.3
+                    scale = 0.5
+                    opacity = 0.3
                 }
             }
             .offset(x: x, y: y)

@@ -10,13 +10,14 @@ import SwiftUI
 
 struct DefaultIndicatorView: View {
 
-    private let count: Int = 8
+    let count: Int
 
     public var body: some View {
         GeometryReader { geometry in
-            ForEach(0..<self.count) { index in
-                DefaultIndicatorItemView(index: index, count: self.count, size: geometry.size)
-            }.frame(width: geometry.size.width, height: geometry.size.height)
+            ForEach(0..<count, id: \.self) { index in
+                DefaultIndicatorItemView(index: index, count: count, size: geometry.size)
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
 }
@@ -46,9 +47,9 @@ struct DefaultIndicatorItemView: View {
             .offset(x: x, y: y)
             .opacity(opacity)
             .onAppear {
-                self.opacity = 1
+                opacity = 1
                 withAnimation(animation) {
-                    self.opacity = 0.3
+                    opacity = 0.3
                 }
             }
     }

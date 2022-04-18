@@ -38,26 +38,53 @@ You may alter it with standard SwiftUI means like this:
         .frame(width: 50.0, height: 50.0)
         .foregroundColor(.red)
    ```
+Or specify another indicator type:
 
-### Indicator types
-`default` - iOS UIActivityIndicator style  
-`arcs`  
-`rotatingDots`  
-`flickeringDots`  
-`scalingDots`  
-`opacityDots`  
-`equalizer`  
-`growingArc` - add custom color for growing Arc, the default value is `Color.red`
    ```swift
-   ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .growingArc(.red))
+   ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .growingArc(.red, lineWidth: 4))
        .frame(width: 50.0, height: 50.0)
    ```
-`growingCircle`  
-`gradient` - circle with angular gradient border stroke, pass colors ilke this:
-   ```swift
-   ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .gradient([.white, .red]))
-       .frame(width: 50.0, height: 50.0)
-   ```  
+
+### Indicator types
+Each indicator type has a number of parameters that have reasonable defaults. You can change them as you see fit, but it is advised to not set them too high or too low.
+
+`default` - iOS UIActivityIndicator style  
+```swift
+.default(count: 8)
+```
+`arcs`    
+```swift
+.arcs(count: 3, lineWidth: 2)
+```
+`rotatingDots`    
+```swift
+.rotatingDots(count: 5)
+```
+`flickeringDots`    
+```swift
+.flickeringDots(count: 8)
+```
+`scalingDots`     
+```swift
+.scalingDots(count: 3, inset: 2)
+``` 
+`opacityDots`  
+```swift
+.opacityDots(count: 3, inset: 4)
+``` 
+`equalizer`  
+```swift
+.equalizer(count: 5)
+```
+`growingArc` - add custom color for growing Arc, the default value is `Color.black`      
+```swift
+.growingArc(.red, lineWidth: 4))
+```
+`growingCircle` no parameters   
+`gradient` - circle with angular gradient border stroke, pass colors ilke this:    
+```swift
+.gradient([.white, .red], lineWidth: 4)
+```  
 
 ## Examples
 

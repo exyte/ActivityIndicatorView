@@ -10,14 +10,15 @@ import SwiftUI
 
 struct OpacityDotsIndicatorView: View {
 
-    private let count: Int = 3
-    private let inset: Int = 4
+    let count: Int
+    let inset: Int
 
     var body: some View {
         GeometryReader { geometry in
-            ForEach(0..<self.count) { index in
-                OpacityDotsIndicatorItemView(index: index, count: self.count, inset: self.inset, size: geometry.size)
-            }.frame(width: geometry.size.width, height: geometry.size.height)
+            ForEach(0..<count, id: \.self) { index in
+                OpacityDotsIndicatorItemView(index: index, count: count, inset: inset, size: geometry.size)
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
 }
@@ -44,11 +45,11 @@ struct OpacityDotsIndicatorItemView: View {
             .scaleEffect(scale)
             .opacity(opacity)
             .onAppear {
-                self.scale = 1
-                self.opacity = 1
+                scale = 1
+                opacity = 1
                 withAnimation(animation) {
-                    self.scale = 0.9
-                    self.opacity = 0.3
+                    scale = 0.9
+                    opacity = 0.3
                 }
             }
             .offset(x: (itemSize + CGFloat(inset)) * CGFloat(index) - size.width / 2 + itemSize / 2)

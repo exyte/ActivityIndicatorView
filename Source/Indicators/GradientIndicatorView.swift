@@ -12,13 +12,13 @@ struct GradientIndicatorView: View {
 
     let colors: [Color]
     let lineCap: CGLineCap
+    let lineWidth: CGFloat
 
     @State private var rotation: Double = 0
 
     var body: some View {
         let gradientColors = Gradient(colors: colors)
         let conic = AngularGradient(gradient: gradientColors, center: .center, startAngle: .zero, endAngle: .degrees(360))
-        let lineWidth: CGFloat = 4
 
         let animation = Animation
             .linear(duration: 1.5)
@@ -33,10 +33,10 @@ struct GradientIndicatorView: View {
                 .stroke(conic, style: StrokeStyle(lineWidth: lineWidth, lineCap: lineCap))
                 .rotationEffect(.degrees(rotation))
                 .onAppear {
-                    self.rotation = 0
+                    rotation = 0
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         withAnimation(animation) {
-                            self.rotation = 360
+                            rotation = 360
                         }
                     }
                 }

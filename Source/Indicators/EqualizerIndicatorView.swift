@@ -10,13 +10,14 @@ import SwiftUI
 
 struct EqualizerIndicatorView: View {
 
-    private let count: Int = 5
+    let count: Int
 
     var body: some View {
         GeometryReader { geometry in
-            ForEach(0..<self.count) { index in
-                EqualizerIndicatorItemView(index: index, count: self.count, size: geometry.size)
-            }.frame(width: geometry.size.width, height: geometry.size.height)
+            ForEach(0..<count, id: \.self) { index in
+                EqualizerIndicatorItemView(index: index, count: count, size: geometry.size)
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
 }
@@ -40,9 +41,9 @@ struct EqualizerIndicatorItemView: View {
             .frame(width: itemSize, height: size.height)
             .scaleEffect(x: 1, y: scale, anchor: .center)
             .onAppear {
-                self.scale = 1
+                scale = 1
                 withAnimation(animation) {
-                    self.scale = 0.4
+                    scale = 0.4
                 }
             }
             .offset(x: 2 * itemSize * CGFloat(index) - size.width / 2 + itemSize / 2)

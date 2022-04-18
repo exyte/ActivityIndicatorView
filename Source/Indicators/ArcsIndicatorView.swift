@@ -10,19 +10,22 @@ import SwiftUI
 
 struct ArcsIndicatorView: View {
 
-    private let count: Int = 3
+    let count: Int
+    let lineWidth: CGFloat
 
     var body: some View {
         GeometryReader { geometry in
-            ForEach(0..<self.count) { index in
-                ArcsIndicatorItemView(index: index, count: self.count, size: geometry.size)
+            ForEach(0..<count, id: \.self) { index in
+                ArcsIndicatorItemView(lineWidth: lineWidth, index: index, count: count, size: geometry.size)
             }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
 }
 
 struct ArcsIndicatorItemView: View {
 
+    let lineWidth: CGFloat
     let index: Int
     let count: Int
     let size: CGSize
@@ -36,20 +39,20 @@ struct ArcsIndicatorItemView: View {
 
         return Group { () -> Path in
             var p = Path()
-            p.addArc(center: CGPoint(x: self.size.width / 2, y: self.size.height / 2),
-                     radius: self.size.width / 2 - CGFloat(self.index) * CGFloat(self.count),
+            p.addArc(center: CGPoint(x: size.width / 2, y: size.height / 2),
+                     radius: size.width / 2 - CGFloat(index) * CGFloat(count),
                      startAngle: .degrees(0),
                      endAngle: .degrees(Double(Int.random(in: 120...300))),
                      clockwise: true)
-            return p.strokedPath(.init(lineWidth: 2))
+            return p.strokedPath(.init(lineWidth: lineWidth))
         }
         .frame(width: size.width, height: size.height)
         .rotationEffect(.degrees(rotation))
         .onAppear {
-            self.rotation = 0
+            rotation = 0
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 withAnimation(animation) {
-                    self.rotation = 360
+                    rotation = 360
                 }
             }
         }
