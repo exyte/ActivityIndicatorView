@@ -1,5 +1,5 @@
-<img src="https://github.com/exyte/ActivityIndicatorView/blob/master/Assets/header.png">
-<img align="right" src="https://raw.githubusercontent.com/exyte/ActivityIndicatorView/master/Assets/demo.gif" width="480" />
+<img src="https://raw.githubusercontent.com/exyte/media/master/common/header.png">
+<img align="right" src="https://raw.githubusercontent.com/exyte/media/master/ActivityIndicatorView/demo.gif" width="480" />
 
 <p><h1 align="left">ActivityIndicatorView</h1></p>
 
@@ -97,6 +97,14 @@ To try out the ActivityIndicatorView examples:
 
 ## Installation
 
+### Swift Package Manager
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/exyte/ActivityIndicatorView.git")
+]
+```
+
 ### CocoaPods
 
 ```ruby
@@ -109,19 +117,19 @@ pod 'ActivityIndicatorView'
 github "Exyte/ActivityIndicatorView"
 ```
 
-### Swift Package Manager
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/exyte/ActivityIndicatorView.git", from: "0.0.1")
-]
-```
-
-### Manually
-
-Drop [ActivityIndicatorView.swift](https://github.com/exyte/ActivityIndicatorView/blob/master/Source/ActivityIndicatorView.swift) into your project.
-
 ## Requirements
 
 * iOS 13+ / watchOS 13+ / tvOS 13+ / macOS 10.15+
 * Xcode 11+
+
+## Our other open source SwiftUI libraries
+[PopupView](https://github.com/exyte/PopupView) - Toasts and popups library    
+[Grid](https://github.com/exyte/Grid) - The most powerful Grid container    
+[ScalingHeaderScrollView](https://github.com/exyte/ScalingHeaderScrollView) - A scroll view with a sticky header which shrinks as you scroll.    
+[MediaPicker](https://github.com/exyte/mediapicker) - Customizable media picker     
+[ConcentricOnboarding](https://github.com/exyte/ConcentricOnboarding) - Animated onboarding flow    
+[FloatingButton](https://github.com/exyte/FloatingButton) - Floating button menu     
+[ProgressIndicatorView](https://github.com/exyte/ProgressIndicatorView) - A number of animated progress indicators    
+[SVGView](https://github.com/exyte/SVGView) - SVG parser    
+[LiquidSwipe](https://github.com/exyte/LiquidSwipe) - Liquid navigation animation    
+
