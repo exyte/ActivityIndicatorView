@@ -20,7 +20,7 @@ public struct ActivityIndicatorView: View {
         case equalizer(count: Int = 5)
         case growingArc(Color = .black, lineWidth: CGFloat = 4)
         case growingCircle
-        case gradient([Color], CGLineCap = .butt, lineWidth: CGFloat = 4)
+        case gradient(_ colors: [Color], CGLineCap = .butt, lineWidth: CGFloat = 4)
     }
 
     @Binding var isVisible: Bool
