@@ -72,10 +72,10 @@ Each indicator type has a number of parameters that have reasonable defaults. Yo
 ```
 `growingArc` - add custom color for growing Arc, the default value is `Color.black`      
 ```swift
-.growingArc(.red, lineWidth: 4))
+.growingArc(.red, lineWidth: 4)
 ```
-`growingCircle` no parameters   
-`gradient` - circle with angular gradient border stroke, pass colors ilke this:    
+`growingCircle` - no parameters   
+`gradient` - circle with angular gradient border stroke, pass colors like this:    
 ```swift
 .gradient([.white, .red], lineWidth: 4)
 ```  
