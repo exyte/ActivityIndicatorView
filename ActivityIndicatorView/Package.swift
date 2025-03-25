@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version: 5.9
 
 import PackageDescription
 
@@ -19,8 +19,9 @@ let package = Package(
     targets: [
     	.target(
     		name: "ActivityIndicatorView",
-            path: "Source"
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency")
+            ]
         )
-    ],
-    swiftLanguageVersions: [.v5]
+    ]
 )

@@ -10,14 +10,14 @@ import SwiftUI
 import ActivityIndicatorView
 
 struct ContentView: View {
-    
+
     @State private var showLoadingIndicator: Bool = true
-    
+
     var body: some View {
         GeometryReader { geometry in
             let size = geometry.size.width / 5
             let spacing: CGFloat = 40.0
-            
+
             VStack {
                 HStack {
                     Spacer()

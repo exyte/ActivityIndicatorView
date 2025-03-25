@@ -11,9 +11,8 @@
 
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fexyte%2FActivityIndicatorView%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/exyte/ActivityIndicatorView)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fexyte%2FActivityIndicatorView%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/exyte/ActivityIndicatorView)
-[![SPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swiftpackageindex.com/exyte/ActivityIndicatorView)
-[![Cocoapods Compatible](https://img.shields.io/badge/cocoapods-Compatible-brightgreen.svg)](https://cocoapods.org/pods/ActivityIndicatorView)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swiftpackageindex.com/exyte/ActivityIndicatorView)
+[![Cocoapods](https://img.shields.io/badge/Cocoapods-Deprecated%20after%201.1.1-yellow.svg)](https://cocoapods.org/pods/ActivityIndicatorView)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
 
 # Usage
@@ -84,10 +83,8 @@ Each indicator type has a number of parameters that have reasonable defaults. Yo
 
 To try out the ActivityIndicatorView examples:
 - Clone the repo `git clone git@github.com:exyte/ActivityIndicatorView.git`
-- Open terminal and run `cd <ActivityIndicatorViewRepo>/Example`
-- Run `pod install` to install all dependencies
-- Run `xed .` to open project in the Xcode
-- Try it!
+- Open `ActivityIndicatorView.xcodeproj` in the Xcode
+- Run it!
 
 ## Installation
 
@@ -97,18 +94,6 @@ To try out the ActivityIndicatorView examples:
 dependencies: [
     .package(url: "https://github.com/exyte/ActivityIndicatorView.git")
 ]
-```
-
-### CocoaPods
-
-```ruby
-pod 'ActivityIndicatorView'
-```
-
-### Carthage
-
-```ogdl
-github "Exyte/ActivityIndicatorView"
 ```
 
 ## Requirements
