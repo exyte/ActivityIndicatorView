@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B4D04F52D92F93B005262A1 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 5B4D04F42D92F93B005262A1 /* ActivityIndicatorView */; };
 		5B4DBAC42D92EC070067A006 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 5B4DBAC32D92EC070067A006 /* ActivityIndicatorView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5B4DBAB02D92EB130067A006 /* ActivityIndicatorViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityIndicatorViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B4DBAC12D92EB4B0067A006 /* ActivityIndicatorView */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ActivityIndicatorView; path = ../ActivityIndicatorView; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -28,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B4D04F52D92F93B005262A1 /* ActivityIndicatorView in Frameworks */,
 				5B4DBAC42D92EC070067A006 /* ActivityIndicatorView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -38,7 +39,6 @@
 		5B4DBAA72D92EB130067A006 = {
 			isa = PBXGroup;
 			children = (
-				5B4DBAC12D92EB4B0067A006 /* ActivityIndicatorView */,
 				5B4DBAB22D92EB130067A006 /* ActivityIndicatorViewExample */,
 				5B4DBAC22D92EC070067A006 /* Frameworks */,
 				5B4DBAB12D92EB130067A006 /* Products */,
@@ -81,6 +81,7 @@
 			name = ActivityIndicatorViewExample;
 			packageProductDependencies = (
 				5B4DBAC32D92EC070067A006 /* ActivityIndicatorView */,
+				5B4D04F42D92F93B005262A1 /* ActivityIndicatorView */,
 			);
 			productName = ActivityIndicatorViewExample;
 			productReference = 5B4DBAB02D92EB130067A006 /* ActivityIndicatorViewExample.app */;
@@ -110,6 +111,9 @@
 			);
 			mainGroup = 5B4DBAA72D92EB130067A006;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5B4D04F32D92F93B005262A1 /* XCLocalSwiftPackageReference "../../ActivityIndicatorView" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5B4DBAB12D92EB130067A006 /* Products */;
 			projectDirPath = "";
@@ -343,7 +347,18 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		5B4D04F32D92F93B005262A1 /* XCLocalSwiftPackageReference "../../ActivityIndicatorView" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../ActivityIndicatorView;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		5B4D04F42D92F93B005262A1 /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ActivityIndicatorView;
+		};
 		5B4DBAC32D92EC070067A006 /* ActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ActivityIndicatorView;
