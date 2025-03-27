@@ -9,6 +9,7 @@
 
 <p><h4>A number of preset loading indicators created with SwiftUI</h4></p>
 
+![](https://img.shields.io/github/v/tag/exyte/ActivityIndicatorView?label=Version)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fexyte%2FActivityIndicatorView%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/exyte/ActivityIndicatorView)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fexyte%2FActivityIndicatorView%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/exyte/ActivityIndicatorView)
 [![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swiftpackageindex.com/exyte/ActivityIndicatorView)
@@ -81,14 +82,14 @@ Each indicator type has a number of parameters that have reasonable defaults. Yo
 
 ## Examples
 
-To try out the ActivityIndicatorView examples:
-- Clone the repo `git clone git@github.com:exyte/ActivityIndicatorView.git`
-- Open `ActivityIndicatorView.xcodeproj` in the Xcode
-- Run it!
+To try ActivityIndicatorView examples:
+- Clone the repo `https://github.com/exyte/ActivityIndicatorView.git`
+- Open `ActivityIndicatorViewExample.xcodeproj`
+- Try it!
 
 ## Installation
 
-### Swift Package Manager
+### [Swift Package Manager](https://swift.org/package-manager/)
 
 ```swift
 dependencies: [
