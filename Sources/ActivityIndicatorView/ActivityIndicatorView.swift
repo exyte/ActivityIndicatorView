@@ -23,48 +23,34 @@ public struct ActivityIndicatorView: View {
         case gradient(_ colors: [Color], CGLineCap = .butt, lineWidth: CGFloat = 4)
     }
 
-    @Binding var isVisible: Bool
     var type: IndicatorType
 
-    public init(isVisible: Binding<Bool>, type: IndicatorType) {
-        _isVisible = isVisible
+    public init(type: IndicatorType) {
         self.type = type
     }
 
     public var body: some View {
-        if isVisible {
-            indicator
-        } else {
-            EmptyView()
-        }
-    }
-    
-    // MARK: - Private
-    
-    private var indicator: some View {
-        ZStack {
-            switch type {
-            case .default(let count):
-                DefaultIndicatorView(count: count)
-            case .arcs(let count, let lineWidth):
-                ArcsIndicatorView(count: count, lineWidth: lineWidth)
-            case .rotatingDots(let count):
-                RotatingDotsIndicatorView(count: count)
-            case .flickeringDots(let count):
-                FlickeringDotsIndicatorView(count: count)
-            case .scalingDots(let count, let inset):
-                ScalingDotsIndicatorView(count: count, inset: inset)
-            case .opacityDots(let count, let inset):
-                OpacityDotsIndicatorView(count: count, inset: inset)
-            case .equalizer(let count):
-                EqualizerIndicatorView(count: count)
-            case .growingArc(let color, let lineWidth):
-                GrowingArcIndicatorView(color: color, lineWidth: lineWidth)
-            case .growingCircle:
-                GrowingCircleIndicatorView()
-            case .gradient(let colors, let lineCap, let lineWidth):
-                GradientIndicatorView(colors: colors, lineCap: lineCap, lineWidth: lineWidth)
-            }
+        switch type {
+        case .default(let count):
+            DefaultIndicatorView(count: count)
+        case .arcs(let count, let lineWidth):
+            ArcsIndicatorView(count: count, lineWidth: lineWidth)
+        case .rotatingDots(let count):
+            RotatingDotsIndicatorView(count: count)
+        case .flickeringDots(let count):
+            FlickeringDotsIndicatorView(count: count)
+        case .scalingDots(let count, let inset):
+            ScalingDotsIndicatorView(count: count, inset: inset)
+        case .opacityDots(let count, let inset):
+            OpacityDotsIndicatorView(count: count, inset: inset)
+        case .equalizer(let count):
+            EqualizerIndicatorView(count: count)
+        case .growingArc(let color, let lineWidth):
+            GrowingArcIndicatorView(color: color, lineWidth: lineWidth)
+        case .growingCircle:
+            GrowingCircleIndicatorView()
+        case .gradient(let colors, let lineCap, let lineWidth):
+            GradientIndicatorView(colors: colors, lineCap: lineCap, lineWidth: lineWidth)
         }
     }
 }
