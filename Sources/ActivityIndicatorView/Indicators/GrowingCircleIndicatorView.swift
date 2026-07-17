@@ -21,7 +21,7 @@ struct GrowingCircleIndicatorView: View {
         return Circle()
             .scaleEffect(scale)
             .opacity(opacity)
-            .onAppear {
+            .task {
                 scale = 0
                 opacity = 1
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {

@@ -40,7 +40,7 @@ struct EqualizerIndicatorItemView: View {
         return RoundedRectangle(cornerRadius: 3)
             .frame(width: itemSize, height: size.height)
             .scaleEffect(x: 1, y: scale, anchor: .center)
-            .onAppear {
+            .task {
                 scale = 1
                 withAnimation(animation) {
                     scale = 0.4

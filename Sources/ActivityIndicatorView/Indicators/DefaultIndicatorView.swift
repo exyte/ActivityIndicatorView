@@ -46,7 +46,7 @@ struct DefaultIndicatorItemView: View {
             .rotationEffect(Angle(radians: Double(angle + CGFloat.pi / 2)))
             .offset(x: x, y: y)
             .opacity(opacity)
-            .onAppear {
+            .task {
                 opacity = 1
                 withAnimation(animation) {
                     opacity = 0.3

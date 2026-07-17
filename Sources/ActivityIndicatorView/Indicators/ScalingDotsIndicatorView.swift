@@ -41,7 +41,7 @@ struct ScalingDotsIndicatorItemView: View {
         return Circle()
             .frame(width: itemSize, height: itemSize)
             .scaleEffect(scale)
-            .onAppear {
+            .task {
                 scale = 1
                 withAnimation(animation) {
                     scale = 0.3

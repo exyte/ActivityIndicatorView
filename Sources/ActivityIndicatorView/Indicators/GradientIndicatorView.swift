@@ -32,7 +32,7 @@ struct GradientIndicatorView: View {
                 .trim(from: lineWidth / 500, to: 1 - lineWidth / 100)
                 .stroke(conic, style: StrokeStyle(lineWidth: lineWidth, lineCap: lineCap))
                 .rotationEffect(.degrees(rotation))
-                .onAppear {
+                .task {
                     rotation = 0
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         withAnimation(animation) {

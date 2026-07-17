@@ -40,7 +40,7 @@ struct RotatingDotsIndicatorItemView: View {
             .scaleEffect(scale)
             .offset(y: size.width / 10 - size.height / 2)
             .rotationEffect(.degrees(rotation))
-            .onAppear {
+            .task {
                 rotation = 0
                 scale = (5 - CGFloat(index)) / 5
                 withAnimation(animation) {

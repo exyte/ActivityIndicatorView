@@ -6,7 +6,7 @@ let package = Package(
 	name: "ActivityIndicatorView",
 	platforms: [
 		.macOS(.v10_15),
-        .iOS(.v13),
+        .iOS(.v15),
         .watchOS(.v6),
         .tvOS(.v13)
     ],

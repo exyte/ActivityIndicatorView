@@ -46,7 +46,7 @@ struct FlickeringDotsIndicatorItemView: View {
             .frame(width: itemSize, height: itemSize)
             .scaleEffect(scale)
             .opacity(opacity)
-            .onAppear {
+            .task {
                 scale = 1
                 opacity = 1
                 withAnimation(animation) {

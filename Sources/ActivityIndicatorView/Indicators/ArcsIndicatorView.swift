@@ -48,7 +48,7 @@ struct ArcsIndicatorItemView: View {
         }
         .frame(width: size.width, height: size.height)
         .rotationEffect(.degrees(rotation))
-        .onAppear {
+        .task {
             rotation = 0
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 withAnimation(animation) {
