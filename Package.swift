@@ -5,10 +5,10 @@ import PackageDescription
 let package = Package(
 	name: "ActivityIndicatorView",
 	platforms: [
-		.macOS(.v10_15),
+		.macOS(.v12),
         .iOS(.v15),
-        .watchOS(.v6),
-        .tvOS(.v13)
+        .watchOS(.v8),
+        .tvOS(.v15)
     ],
     products: [
     	.library(
